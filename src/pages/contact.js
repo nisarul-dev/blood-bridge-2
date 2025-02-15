@@ -7,7 +7,7 @@ export default function Contact() {
         email: '',
         subject: '',
         message: '',
-        formID: 'd7ab88a',
+        formID: 'cbd0c4a',
     });
     const [responseMessage, setResponseMessage] = useState(null);
 
@@ -31,7 +31,7 @@ export default function Contact() {
 
         try {
             // Replace with your WordPress Contact Form 7 REST endpoint
-            const response = await fetch('http://localhost:8080/another-wordpress/wp-json/contact-form-7/v1/contact-forms/7/feedback', {
+            const response = await fetch('http://localhost/BloodBridge/wp-json/contact-form-7/v1/contact-forms/50/feedback', {
                 method: 'POST',
                 body: form,
             });

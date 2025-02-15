@@ -1,8 +1,31 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 import Link from 'next/link';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { useAuth } from '@/context/AuthContext.js';
 
 const Navbar = () => {
+
+    const { isLoggedIn, logout } = useAuth();
+
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // const checkLoginStatus = () => {
+    //   if (localStorage.getItem("token") !== null) {
+    //     setIsLoggedIn(true);
+    //   } else {
+    //     setIsLoggedIn(false);
+    //   }
+    // };
+  
+    // useEffect(() => {
+    //   checkLoginStatus();
+    // }, []);
+
+    const handleLogout = () => {
+        localStorage.getItem("token") !== null && localStorage.removeItem("token");
+    }
+
     return (
         <AppBar position="static" color="primary">
             <Toolbar>
@@ -32,21 +55,36 @@ const Navbar = () => {
                             Contact
                         </Link>
                     </Button>
-                    <Button color="inherit">
-                        <Link href="/login" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            Contact
-                        </Link>
-                    </Button>
-                    <Button color="inherit">
-                        <Link href="/signup" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            Contact
-                        </Link>
-                    </Button>
-                    <Button color="inherit">
-                        <Link href="/create-post" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            Create Post
-                        </Link>
-                    </Button>
+                    { isLoggedIn === false ?
+                        <>
+                            <Button color="inherit">
+                                <Link href="/login" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                    Login
+                                </Link>
+                            </Button>
+                        
+                            <Button color="inherit">
+                                <Link href="/signup" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                    Sign Up
+                                </Link>
+                            </Button>
+                        </>
+                        :
+                        <>
+                            <Button color="inherit">
+                                <Link href="/create-post" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                    Create Post
+                                </Link>
+                            </Button>
+                            <Button onClick={logout} color="inherit">
+                                {/* <Link href="/logout" style={{ color: 'inherit', textDecoration: 'none' }}> */}
+                                    Logout
+                                {/* </Link> */}
+                            </Button>
+                        </>
+                    }
+
+                    
                 </Box>
             </Toolbar>
         </AppBar>

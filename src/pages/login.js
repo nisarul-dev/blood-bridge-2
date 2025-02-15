@@ -1,7 +1,18 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { TextField, Button, Typography, Box } from "@mui/material";
+import { useAuth } from "@/context/AuthContext";
+import he from "he";
 
 export default function Login() {
+    const router = useRouter();
+
+    // If already logged in, redirect to home page
+    const { isLoggedIn, login } = useAuth();
+    if (isLoggedIn) {
+        router.push("/");
+    }
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -9,7 +20,7 @@ export default function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/another-wordpress/wp-json/jwt-auth/v1/token", {
+            const response = await fetch("http://localhost/BloodBridge/wp-json/jwt-auth/v1/token", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -24,7 +35,7 @@ export default function Login() {
 
             const data = await response.json();
             localStorage.setItem("token", data.token);
-            alert("Login Successful!");
+            login();
         } catch (err) {
             setError(err.message);
         }
@@ -37,7 +48,7 @@ export default function Login() {
             </Typography>
             {error && (
                 <Typography variant="body2" color="error" align="center" gutterBottom>
-                    {error}
+                    {he.decode( error.replace(/<[^>]*>?/gm, '') )}
                 </Typography>
             )}
             <form onSubmit={handleLogin}>

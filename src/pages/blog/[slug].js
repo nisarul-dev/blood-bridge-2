@@ -13,7 +13,7 @@ export default function Post() {
             const fetchPost = async () => {
                 try {
                     // Replace with your WordPress site's REST API URL
-                    const response = await fetch(`http://localhost:8080/another-wordpress/wp-json/wp/v2/posts?slug=${slug}`);
+                    const response = await fetch(`http://localhost/BloodBridge/wp-json/wp/v2/posts?slug=${slug}`);
                     const data = await response.json();
 
                     if (data.length > 0) {

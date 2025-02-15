@@ -10,7 +10,7 @@ export default function Signup() {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/another-wordpress/wp-json/wp/v2/users", {
+            const response = await fetch("http://localhost/BloodBridge/wp-json/wp/v2/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

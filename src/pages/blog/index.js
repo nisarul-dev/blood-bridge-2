@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Container, Grid, Typography, Card, CardContent, Button, CircularProgress } from '@mui/material';
 import Link from 'next/link';
+import he from 'he';
 
 export default function Blog() {
     const [posts, setPosts] = useState([]);
@@ -15,7 +16,7 @@ export default function Blog() {
 
         try {
             // Replace with your WordPress site's REST API URL
-            const response = await fetch(`http://localhost:8080/another-wordpress/wp-json/wp/v2/posts?page=${page}&per_page=6`);
+            const response = await fetch(`http://localhost/BloodBridge/wp-json/wp/v2/posts?page=${page}&per_page=6`);
             const data = await response.json();
             setPosts((prev) => (page === 1 ? data : [...prev, ...data])); // Append new posts on "Load More"
             setTotalPages(Number(response.headers.get('X-WP-TotalPages')));
@@ -59,7 +60,7 @@ export default function Blog() {
                                         {new Date(post.date).toLocaleDateString()}
                                     </Typography>
                                     <Typography variant="body1" sx={{ mb: 2 }}>
-                                        {post.excerpt.rendered.replace(/<[^>]*>?/gm, '')}
+                                        {he.decode(post.excerpt.rendered.replace(/<[^>]*>?/gm, ''))}
                                     </Typography>
                                     <Link href={`/blog/${post.slug}`} passHref>
                                         <Typography variant="body1" color="primary">
