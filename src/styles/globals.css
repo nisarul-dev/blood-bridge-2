@@ -1,0 +1,21 @@
+/* Home Page */
+
+.logo-link {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2px 8px ;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-link:hover {
+    background-color: rgb(203, 248, 255);
+    border-radius: 8px;
+    padding: 2px 8px ;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

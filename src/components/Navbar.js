@@ -1,95 +1,184 @@
-import React from 'react';
-import { useState, useEffect } from "react";
-import Link from 'next/link';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
-import { useAuth } from '@/context/AuthContext.js';
+import React, { useState } from "react";
+import Link from "next/link";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Box,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import Image from "next/image";
+import MenuIcon from "@mui/icons-material/Menu";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useAuth } from "@/context/AuthContext";
 
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth(); // Accessing authentication state and logout function
 
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
-    // const checkLoginStatus = () => {
-    //   if (localStorage.getItem("token") !== null) {
-    //     setIsLoggedIn(true);
-    //   } else {
-    //     setIsLoggedIn(false);
-    //   }
-    // };
-  
-    // useEffect(() => {
-    //   checkLoginStatus();
-    // }, []);
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          my: 2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <FavoriteIcon sx={{ mr: 1 }} /> BloodBridge
+      </Typography>
+      <List>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} href="/">
+            <ListItemText primary="Home" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} href="/donate">
+            <ListItemText primary="Donate" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} href="/find-donors">
+            <ListItemText primary="Find Donors" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} href="/blood-drives">
+            <ListItemText primary="Blood Drives" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} href="/about">
+            <ListItemText primary="About" />
+          </ListItemButton>
+        </ListItem>
+        {isLoggedIn ? (
+          <>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/create-post">
+                <ListItemText primary="Create Post" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={logout}>
+                <ListItemText primary="Logout" />
+              </ListItemButton>
+            </ListItem>
+          </>
+        ) : (
+          <>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/login">
+                <ListItemText primary="Login" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton component={Link} href="/signup">
+                <ListItemText primary="Sign Up" />
+              </ListItemButton>
+            </ListItem>
+          </>
+        )}
+      </List>
+    </Box>
+  );
 
-    const handleLogout = () => {
-        localStorage.getItem("token") !== null && localStorage.removeItem("token");
-    }
-
-    return (
-        <AppBar position="static" color="primary">
-            <Toolbar>
-                <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                    <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-                        Blood Bridge
-                    </Link>
-                </Typography>
-                <Box>
-                    <Button color="inherit">
-                        <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            Home
-                        </Link>
-                    </Button>
-                    <Button color="inherit">
-                        <Link href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            About
-                        </Link>
-                    </Button>
-                    <Button color="inherit">
-                        <Link href="/blog" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            Blog
-                        </Link>
-                    </Button>
-                    <Button color="inherit">
-                        <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>
-                            Contact
-                        </Link>
-                    </Button>
-                    { isLoggedIn === false ?
-                        <>
-                            <Button color="inherit">
-                                <Link href="/login" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                    Login
-                                </Link>
-                            </Button>
-                        
-                            <Button color="inherit">
-                                <Link href="/signup" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                    Sign Up
-                                </Link>
-                            </Button>
-                        </>
-                        :
-                        <>
-                            <Button color="inherit">
-                                <Link href="/create-post" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                    Create Post
-                                </Link>
-                            </Button>
-                            <Button onClick={logout} color="inherit">
-                                {/* <Link href="/logout" style={{ color: 'inherit', textDecoration: 'none' }}> */}
-                                    Logout
-                                {/* </Link> */}
-                            </Button>
-                        </>
-                    }
-
-                    
-                </Box>
-            </Toolbar>
-        </AppBar>
-    );
+  return (
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography
+            variant="p"
+            component="div"
+            sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}
+          >
+            <Link href="/" className="logo-link">
+                <Image src="/BloodBridge-Logo.png" alt="BloodBridge Logo" width={200} height={40} />
+            </Link>
+          </Typography>
+          {isMobile ? (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <Box>
+              <Button color="inherit" component={Link} href="/">
+                Home
+              </Button>
+              <Button color="inherit" component={Link} href="/donate">
+                Donate
+              </Button>
+              <Button color="inherit" component={Link} href="/find-donors">
+                Find Donors
+              </Button>
+              <Button color="inherit" component={Link} href="/blood-drives">
+                Blood Drives
+              </Button>
+              <Button color="inherit" component={Link} href="/about">
+                About
+              </Button>
+              {isLoggedIn ? (
+                <>
+                  <Button color="inherit" component={Link} href="/create-post">
+                    Create Post
+                  </Button>
+                  <Button onClick={logout} color="inherit">
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button color="inherit" component={Link} href="/login">
+                    Login
+                  </Button>
+                  <Button color="inherit" component={Link} href="/signup">
+                    Sign Up
+                  </Button>
+                </>
+              )}
+            </Box>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </>
+  );
 };
 
 export default Navbar;
-
