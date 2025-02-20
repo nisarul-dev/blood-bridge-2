@@ -137,8 +137,14 @@ const Navbar = () => {
               <Button color="inherit" component={Link} href="/blood-drives">
                 Blood Drives
               </Button>
+              <Button color="inherit" component={Link} href="/blog">
+                Blog
+              </Button>
               <Button color="inherit" component={Link} href="/about">
                 About
+              </Button>
+              <Button color="inherit" component={Link} href="/contact">
+                Contact
               </Button>
               {isLoggedIn ? (
                 <>

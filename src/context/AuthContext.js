@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = () => {
-    localStorage.setItem("token", "fake-jwt-token");
     setIsLoggedIn(true);
     setSnackbar({ open: true, message: "Login Successful!", severity: "success" });
 

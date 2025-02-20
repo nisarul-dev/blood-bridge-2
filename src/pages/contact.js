@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Box, Button, Container, Grid, TextField, Typography, Alert } from '@mui/material';
+import { Box, Button, Container, Grid, TextField, Typography, Alert, Paper } from '@mui/material';
+import ContactInfo from '../components/contact/ContactInfo';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -50,82 +51,86 @@ export default function Contact() {
     };
 
     return (
-        <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
-            <Container>
-                <Typography variant="h2" align="center" gutterBottom>
-                    Contact Us
-                </Typography>
-                <Typography align="center" sx={{ mb: 4 }}>
-                    Have a question or need assistance? Fill out the form below to reach us.
-                </Typography>
+        <>
+            <Box sx={{ py: 8, bgcolor: "background.default" }}>
+                <Container maxWidth="md">
+                    <Paper elevation={3} sx={{ p: 4 }}>
+                        <Typography variant="h3" align="center" gutterBottom>
+                            Get in Touch
+                        </Typography>
+                        <Typography variant="body1" align="center" paragraph>
+                            Have questions or want to learn more? Fill out the form below, and we'll get back to you as soon as
+                            possible.
+                        </Typography>
+                            <Grid item xs={12} md={8}>
+                                <form onSubmit={handleSubmit}>
+                                    <TextField
+                                        fullWidth
+                                        label="Your Name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        variant="outlined"
+                                        margin="normal"
+                                        required
+                                    />
+                                    <TextField
+                                        fullWidth
+                                        label="Your Email"
+                                        name="email"
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        variant="outlined"
+                                        margin="normal"
+                                        required
+                                    />
+                                    <TextField
+                                        fullWidth
+                                        label="Subject"
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                        variant="outlined"
+                                        margin="normal"
+                                    />
+                                    <TextField
+                                        fullWidth
+                                        label="Message"
+                                        name="message"
+                                        multiline
+                                        rows={4}
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        variant="outlined"
+                                        margin="normal"
+                                        required
+                                    />
+                                    <Button
+                                        fullWidth
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary"
+                                        size="large"
+                                        sx={{ mt: 3, mb: 2 }}
+                                    >
+                                        Send Message
+                                    </Button>
+                                </form>
 
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} md={8}>
-                        <form onSubmit={handleSubmit}>
-                            <TextField
-                                fullWidth
-                                label="Your Name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                variant="outlined"
-                                margin="normal"
-                                required
-                            />
-                            <TextField
-                                fullWidth
-                                label="Your Email"
-                                name="email"
-                                type="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                variant="outlined"
-                                margin="normal"
-                                required
-                            />
-                            <TextField
-                                fullWidth
-                                label="Subject"
-                                name="subject"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                variant="outlined"
-                                margin="normal"
-                            />
-                            <TextField
-                                fullWidth
-                                label="Message"
-                                name="message"
-                                multiline
-                                rows={4}
-                                value={formData.message}
-                                onChange={handleChange}
-                                variant="outlined"
-                                margin="normal"
-                                required
-                            />
-                            <Button
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                size="large"
-                                sx={{ mt: 2 }}
-                            >
-                                Send Message
-                            </Button>
-                        </form>
-
-                        {responseMessage && (
-                            <Alert
-                                severity={responseMessage.type}
-                                sx={{ mt: 4 }}
-                            >
-                                {responseMessage.text}
-                            </Alert>
-                        )}
-                    </Grid>
-                </Grid>
-            </Container>
-        </Box>
+                                {responseMessage && (
+                                    <Alert
+                                        severity={responseMessage.type}
+                                        sx={{ mt: 4 }}
+                                    >
+                                        {responseMessage.text}
+                                    </Alert>
+                                )}
+                            </Grid>
+                    </Paper>
+                </Container>
+            </Box>
+            <ContactInfo />
+        </>
     );
 }

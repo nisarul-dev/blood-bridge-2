@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { TextField, Button, Typography, Box } from "@mui/material";
+import { useAuth } from "@/context/AuthContext";
 
 export default function CreatePost() {
+    const router = useRouter();
+    const { isLoggedIn, login } = useAuth();
+    
+    useEffect(() => {
+        if (!isLoggedIn) {
+            router.push("/");
+        }
+    }, [isLoggedIn, router]); // Ensure dependencies are correct
+
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [message, setMessage] = useState("");
