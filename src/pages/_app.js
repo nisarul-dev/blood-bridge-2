@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import theme from '@/themes/theme';
 import Layout from '@/components/Layout';
 import { AuthProvider } from '@/context/AuthContext.js';
+import "leaflet/dist/leaflet.css";
 
 export default function App({ Component, pageProps }) {
   return (

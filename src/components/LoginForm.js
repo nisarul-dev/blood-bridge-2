@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 import he from "he";
+import NextLink from "next/link";
 
 const LoginForm = () => {
     const router = useRouter();
@@ -21,7 +22,7 @@ const LoginForm = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/test-wp-2025/wp-json/jwt-auth/v1/token", {
+            const response = await fetch("http://localhost/BloodBridge/wp-json/jwt-auth/v1/token", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -48,7 +49,7 @@ const LoginForm = () => {
                 <Grid container spacing={0} sx={{ boxShadow: 3, borderRadius: 2, overflow: "hidden" }}>
                     <Grid item xs={12} md={6}>
                         <Box sx={{ position: "relative", height: { xs: "300px", md: "100%" } }}>
-                            <Image src="/login-bg.jpg?height=600&width=600" alt="Login" layout="fill" objectFit="cover" />
+                            <Image src="/sign-up-bgg.jpg?height=600&width=600" alt="Login" layout="fill" objectFit="cover" />
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6}>
@@ -91,7 +92,7 @@ const LoginForm = () => {
                                     </Button>
                                 </form>
                                 <Grid container justifyContent="center">
-                                    <Link href="/signup" variant="body2">
+                                    <Link href="/signup" component={NextLink}>
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>
