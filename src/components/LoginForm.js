@@ -37,6 +37,9 @@ const LoginForm = () => {
 
             const data = await response.json();
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user_id", data.user_id);
+            localStorage.setItem("username", data.username);
+            localStorage.setItem("user_email", data.user_email);
             login();
         } catch (err) {
             setError(err.message);

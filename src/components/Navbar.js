@@ -78,6 +78,11 @@ const Navbar = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
+              <ListItemButton component={Link} href="/profile">
+                <ListItemText primary="Profile Dashboard" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
               <ListItemButton onClick={logout}>
                 <ListItemText primary="Logout" />
               </ListItemButton>
@@ -150,6 +155,9 @@ const Navbar = () => {
                 <>
                   <Button color="inherit" component={Link} href="/create-post">
                     Create Post
+                  </Button>
+                  <Button color="inherit" component={Link} href="/profile">
+                    My Dashboard
                   </Button>
                   <Button onClick={logout} color="inherit">
                     Logout
