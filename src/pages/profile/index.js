@@ -1,10 +1,14 @@
+import dynamic from "next/dynamic"
 import ProfileLayout from "@/components/profile/ProfileLayout"
-import PersonalInfo from "@/components/profile/PersonalInfo"
+
+const PersonalInfoClientOnly = dynamic(() => import("@/components/profile/PersonalInfo"), {
+  ssr: false, // Disable server-side rendering
+});
 
 export default function PersonalInfoPage() {
   return (
     <ProfileLayout>
-      <PersonalInfo /> {/* ✅ FIXED HERE */}
+      <PersonalInfoClientOnly /> {/* ✅ FIXED HERE */}
     </ProfileLayout>
   )
 }
