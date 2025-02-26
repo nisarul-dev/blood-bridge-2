@@ -8,7 +8,7 @@ const PersonalInfoClientOnly = dynamic(() => import("@/components/profile/Person
 export default function PersonalInfoPage() {
   return (
     <ProfileLayout>
-      <PersonalInfoClientOnly /> {/* ✅ FIXED HERE */}
+      <PersonalInfoClientOnly customUser={undefined}/> {/* ✅ FIXED HERE */}
     </ProfileLayout>
   )
 }

@@ -13,17 +13,18 @@ const MapComponent = dynamic(() => import("./MapComponent"), {
   loading: () => <Box sx={{ height: 400, width: "100%", bgcolor: "grey.200" }} />,
 });
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ customUser }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   
-  const username = localStorage.getItem("username");
-  console.log(username);
+  const currentUsername = customUser ? customUser : localStorage.getItem("username");
+  console.log("New User" + currentUsername);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost/BloodBridge/wp-json/bloodbridge/v1/user?username=${username}`, {
+        console.log(`http://localhost/BloodBridge/wp-json/bloodbridge/v1/user?username=${currentUsername}`);
+        const response = await fetch(`http://localhost/BloodBridge/wp-json/bloodbridge/v1/user?username=${currentUsername}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -70,7 +71,7 @@ export default function PersonalInfo() {
           src="/placeholder.svg?height=100&width=100"
           sx={{ width: 100, height: 100, mb: 2 }}
         />
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h5" gutterBottom>
           {user.firstName} {user.lastName}
         </Typography>
         <Chip

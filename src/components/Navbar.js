@@ -61,13 +61,13 @@ const Navbar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} href="/blood-drives">
-            <ListItemText primary="Blood Drives" />
+          <ListItemButton component={Link} href="/about">
+            <ListItemText primary="About" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} href="/about">
-            <ListItemText primary="About" />
+          <ListItemButton component={Link} href="/blog">
+            <ListItemText primary="Blog" />
           </ListItemButton>
         </ListItem>
         {isLoggedIn ? (
@@ -139,17 +139,14 @@ const Navbar = () => {
               <Button color="inherit" component={Link} href="/find-donors">
                 Find Donors
               </Button>
-              <Button color="inherit" component={Link} href="/blood-drives">
-                Blood Drives
-              </Button>
-              <Button color="inherit" component={Link} href="/blog">
-                Blog
-              </Button>
               <Button color="inherit" component={Link} href="/about">
                 About
               </Button>
               <Button color="inherit" component={Link} href="/contact">
                 Contact
+              </Button>
+              <Button color="inherit" component={Link} href="/blog">
+                Blog
               </Button>
               {isLoggedIn ? (
                 <>
