@@ -40,7 +40,6 @@ const TeamSection = () => {
           {teamMembers.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                <CardMedia component="img" height="300" image={member.image} alt={member.name} />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="div">
                     {member.name}

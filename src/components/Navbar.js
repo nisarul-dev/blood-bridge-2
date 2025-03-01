@@ -51,11 +51,6 @@ const Navbar = () => {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component={Link} href="/donate">
-            <ListItemText primary="Donate" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
           <ListItemButton component={Link} href="/find-donors">
             <ListItemText primary="Find Donors" />
           </ListItemButton>
@@ -67,14 +62,14 @@ const Navbar = () => {
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton component={Link} href="/blog">
-            <ListItemText primary="Blog" />
+            <ListItemText primary="Articles" />
           </ListItemButton>
         </ListItem>
         {isLoggedIn ? (
           <>
             <ListItem disablePadding>
-              <ListItemButton component={Link} href="/create-post">
-                <ListItemText primary="Create Post" />
+              <ListItemButton component={Link} href="/blood-request-post">
+                <ListItemText primary="Blood Request Post" />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -133,9 +128,6 @@ const Navbar = () => {
               <Button color="inherit" component={Link} href="/">
                 Home
               </Button>
-              <Button color="inherit" component={Link} href="/donate">
-                Donate
-              </Button>
               <Button color="inherit" component={Link} href="/find-donors">
                 Find Donors
               </Button>
@@ -146,12 +138,12 @@ const Navbar = () => {
                 Contact
               </Button>
               <Button color="inherit" component={Link} href="/blog">
-                Blog
+                Articles
               </Button>
               {isLoggedIn ? (
                 <>
-                  <Button color="inherit" component={Link} href="/create-post">
-                    Create Post
+                  <Button color="inherit" component={Link} href="/blood-request-post">
+                    Blood Request Post
                   </Button>
                   <Button color="inherit" component={Link} href="/profile">
                     My Dashboard

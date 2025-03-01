@@ -8,7 +8,7 @@ export default function Contact() {
         email: '',
         subject: '',
         message: '',
-        formID: 'cbd0c4a',
+        formID: 'b0bad3a',
     });
     const [responseMessage, setResponseMessage] = useState(null);
 
@@ -32,7 +32,7 @@ export default function Contact() {
 
         try {
             // Replace with your WordPress Contact Form 7 REST endpoint
-            const response = await fetch('https://nisarul.com/bloodbridge/wp-json/contact-form-7/v1/contact-forms/50/feedback', {
+            const response = await fetch('https://nisarul.com/bloodbridge/wp-json/contact-form-7/v1/contact-forms/6/feedback', {
                 method: 'POST',
                 body: form,
             });

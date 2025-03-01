@@ -42,7 +42,7 @@ export default function Blog() {
         <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
             <Container>
                 <Typography variant="h2" align="center" gutterBottom>
-                    Blog
+                    Articles
                 </Typography>
                 <Typography align="center" sx={{ mb: 4 }}>
                     Explore our latest posts and updates.

@@ -25,7 +25,7 @@ const AboutHero = () => {
                 borderRadius: 2,
               }}
               alt="About us image"
-              src="/placeholder.svg?height=400&width=600"
+              src="/bloodbridge-logo.png?height=400&width=600"
             />
           </Grid>
         </Grid>
