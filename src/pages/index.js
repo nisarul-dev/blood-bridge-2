@@ -66,7 +66,7 @@ export default function Home() {
           </Typography>
           <Grid container spacing={2} justifyContent="center">
             <Grid item>
-              <Button variant="contained" color="primary" component={Link} href="/donate" size="large">
+              <Button variant="contained" color="primary" component={Link} href="/signup" size="large">
                 Donate Blood
               </Button>
             </Grid>
