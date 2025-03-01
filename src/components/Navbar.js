@@ -131,6 +131,9 @@ const Navbar = () => {
               <Button color="inherit" component={Link} href="/find-donors">
                 Find Donors
               </Button>
+              <Button color="inherit" component={Link} href="/top-donors">
+                Top Donors
+              </Button>
               <Button color="inherit" component={Link} href="/about">
                 About
               </Button>
