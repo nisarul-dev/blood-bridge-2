@@ -22,7 +22,7 @@ const LoginForm = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost/BloodBridge/wp-json/jwt-auth/v1/token", {
+            const response = await fetch("https://nisarul.com/bloodbridge/wp-json/jwt-auth/v1/token", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

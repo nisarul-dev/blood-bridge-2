@@ -38,7 +38,7 @@ const SignUpForm = () => {
         setSuccess("");
 
         try {
-            const response = await fetch("http://localhost/BloodBridge/wp-json/blood-bridge/v1/register-user", {
+            const response = await fetch("https://nisarul.com/bloodbridge/wp-json/blood-bridge/v1/register-user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -23,8 +23,8 @@ export default function PersonalInfo({ customUser }) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        console.log(`http://localhost/BloodBridge/wp-json/bloodbridge/v1/user?username=${currentUsername}`);
-        const response = await fetch(`http://localhost/BloodBridge/wp-json/bloodbridge/v1/user?username=${currentUsername}`, {
+        console.log(`https://nisarul.com/bloodbridge/wp-json/bloodbridge/v1/user?username=${currentUsername}`);
+        const response = await fetch(`https://nisarul.com/bloodbridge/wp-json/bloodbridge/v1/user?username=${currentUsername}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

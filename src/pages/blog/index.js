@@ -16,7 +16,7 @@ export default function Blog() {
 
         try {
             // Replace with your WordPress site's REST API URL
-            const response = await fetch(`http://localhost/BloodBridge/wp-json/wp/v2/posts?page=${page}&per_page=6`);
+            const response = await fetch(`https://nisarul.com/bloodbridge/wp-json/wp/v2/posts?page=${page}&per_page=6`);
             const data = await response.json();
             setPosts((prev) => (page === 1 ? data : [...prev, ...data])); // Append new posts on "Load More"
             setTotalPages(Number(response.headers.get('X-WP-TotalPages')));

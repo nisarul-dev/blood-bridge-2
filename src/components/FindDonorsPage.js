@@ -31,7 +31,7 @@ const FindDonorsPage = () => {
   }, [latitude, longitude]);
 
   const handleSearch = async () => {
-    let url = `http://localhost/BloodBridge/wp-json/bloodbridge/v1/users/?`;
+    let url = `https://nisarul.com/bloodbridge/wp-json/bloodbridge/v1/users/?`;
     if (bloodType) url += `blood_group=${bloodType}&`;
     if (latitude && longitude) url += `latitude=${latitude}&longitude=${longitude}`;
 

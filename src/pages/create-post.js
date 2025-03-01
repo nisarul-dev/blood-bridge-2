@@ -27,7 +27,7 @@ export default function CreatePost() {
         }
 
         try {
-            const response = await fetch("http://localhost/BloodBridge/wp-json/wp/v2/posts", {
+            const response = await fetch("https://nisarul.com/bloodbridge/wp-json/wp/v2/posts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
